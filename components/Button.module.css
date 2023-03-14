@@ -1,0 +1,12 @@
+/*
+You do not need to worry about .error {} colliding with any other `.css` or
+`.module.css` files!
+*/
+.error {
+    color: white;
+    width: 120px;
+    text-align: center;
+    background-color: rgb(120, 131, 179);
+    margin: 0 auto;
+  }
+  

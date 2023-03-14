@@ -7,6 +7,8 @@ import Artist from "@components/Stats/Artist";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
 import { SpotifyArtist, SpotifyTrack } from "@lib/types";
+import { useRef, useState } from 'react';
+import{Button} from '../components/Button'
 
 type Stats = {
   title: string;
@@ -16,6 +18,44 @@ type Stats = {
 export default function Stats() {
   const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
   const { data: artists } = useSWR("/api/stats/artists", fetcher);
+
+  const inputEmail = useRef(null);
+  const inputMailContent = useRef(null);
+  const [message, setMessage] = useState('');
+
+
+  const onSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    const emailValue: string = inputEmail.current.value;
+    const mailContent: string = inputMailContent.current.value;
+
+    console.log(emailValue);
+    console.log(mailContent);
+
+    const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (!emailValue.match(validRegex)) {
+      setMessage('Please introduce a correct email address');
+    }
+
+    try {
+      const response = await fetch('/api/save-link', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: emailValue, mailContent:mailContent }),
+      });
+
+      const data = await response.json();
+      setMessage(data.message);
+    } catch (e) {
+      console.log('ERROR', e);
+    }
+
+    inputMailContent.current.value="";
+    inputEmail.current.value="";
+  };
 
 
   return (
@@ -102,6 +142,43 @@ export default function Stats() {
             )}
           </div>
         </div>
+      <div className="place_single_page">
+      <form onSubmit={onSubmit} className="saveLinks">
+      <AnimatedHeading
+            variants={opacityVariant}
+            className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
+          >
+            Save the Spotify links to your emails
+          </AnimatedHeading>
+        <div className="flex flex-col gap-0 my-4 font-barlow">
+        <label><strong>EMAIL</strong></label>
+        <input
+          ref={inputEmail}
+          type="email"
+          id="email"
+          placeholder="Please insert your email here"
+        />
+        </div>
+        <div className="flex flex-col gap-0 my-4 font-barlow">
+        <label>
+          <strong>CONTENT</strong></label>
+        <input
+          ref={inputMailContent}
+          type="mailContent"
+          id="mailContent"
+          placeholder="Please insert your email content"
+        />
+        </div>
+        <div className="flex flex-col gap-0 my-4 font-barlow"></div>
+        <Button></Button>
+        {/* <button type="submit">Submit</button> */}
+      </form>
+      <AnimatedText
+            variants={opacityVariant}
+            className="mt-4 text-gray-700 dark:text-gray-300"
+          >{message}
+        </AnimatedText>
+    </div>
       </section>
     </>
   );
