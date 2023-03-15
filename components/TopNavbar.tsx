@@ -10,7 +10,6 @@ import {
   popUp,
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
-import { navigationRoutes } from "../utils/utils";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 /* TopNavbar Component */
@@ -76,11 +75,6 @@ export default function TopNavbar() {
     >
       {/* Mobile Navigation Hamburger and MobileMenu */}
       <HamBurger open={navOpen} handleClick={handleClick} />
-      <AnimatePresence>
-        {navOpen && (
-          <MobileMenu links={navigationRoutes} handleClick={handleClick} />
-        )}
-      </AnimatePresence>
 
       <Link href="/" className="mr-3" aria-label="Link to Home Page">
         <div className="w-full sm:!hidden">
@@ -98,19 +92,6 @@ export default function TopNavbar() {
         </div>
       </Link>
 
-      {/* Top Nav list */}
-      <motion.nav className="z-10 hidden sm:flex md:inset-0 md:justify-center">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={FadeContainer}
-          className="flex items-center md:gap-2"
-        >
-          {navigationRoutes.slice(0, 7).map((link, index) => {
-            return <NavItem key={index} href={`/${link}`} text={link} />;
-          })}
-        </motion.div>
-      </motion.nav>
 
       {/* DarkMode Container */}
       <motion.div

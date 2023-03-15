@@ -5,7 +5,6 @@ import {
   opacityVariant,
   popUp,
 } from "../content/FramerMotionVariants";
-import { navigationRoutes } from "../utils/utils";
 import { motion } from "framer-motion";
 import { SiSpotify } from "react-icons/si";
 import useSWR from "swr";
@@ -35,23 +34,6 @@ export default function Footer({
             <NotPlaying />
           )}
         </div>
-
-        <section className="grid grid-cols-3 gap-10">
-          <div className="flex flex-col gap-4 capitalize">
-            {navigationRoutes.slice(0, 5).map((text, index) => {
-              return <FooterLink key={index} route={text} text={text} />;
-            })}
-          </div>
-          <div className="flex flex-col gap-4 capitalize">
-            {navigationRoutes
-              .slice(5, navigationRoutes.length)
-              .map((route, index) => {
-                let text = route;
-                if (route === "rss") text = "RSS";
-                return <FooterLink key={index} route={route} text={text} />;
-              })}
-          </div>
-        </section>
 
         <motion.div
           variants={opacityVariant}

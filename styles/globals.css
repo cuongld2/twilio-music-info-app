@@ -79,7 +79,7 @@ pre::-webkit-scrollbar {
 }
 
 body.dark {
-  background-color: #3a3e41;
+  background-color: #26127e;
 }
 
 ::-webkit-scrollbar {
@@ -170,21 +170,6 @@ code > .line::before {
 #nprogress .peg {
   box-shadow: none !important;
 }
-/* Nprogress bar Custom Styling (force) : ENDS */
-
-.blogGrid {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 1fr;
-}
-
-.blog-pre > code {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
     @apply mb-[2px] text-2xl cursor-pointer;
@@ -206,12 +191,6 @@ code > .line::before {
     @apply p-5 md:px-24 pb-10 dark:bg-darkPrimary dark:text-gray-200 grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5;
   }
 
-  .blog_bottom_icon {
-    @apply text-3xl p-1 bg-gray-100 dark:bg-darkSecondary sm:bg-transparent ring-1 dark:ring-gray-500 ring-gray-300 sm:hover:bg-gray-100 rounded-md cursor-pointer ml-1;
-  }
-  .blog_bottom_button {
-    @apply block sm:hidden py-1 w-full lg:hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none;
-  }
   .user_reaction {
     @apply flex font-semibold items-center cursor-pointer w-full justify-center sm:justify-start sm:w-auto space-x-1 text-base;
   }
@@ -228,9 +207,7 @@ code > .line::before {
   .home-content-section {
     @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow shadow-black/20 dark:shadow-white/20 dark:bg-darkSecondary ring-gray-400 rounded-xl p-3 cursor-pointer select-none  lg:hover:scale-105 scale-95 transition bg-white snap-center lg:snap-align-none md:first:ml-24 md:last:mr-24;
   }
-  .blog-hover-button {
-    @apply flex items-center space-x-2 border-2 border-white dark:border-zinc-600 px-3 py-1 font-semibold w-min text-white dark:text-white hover:bg-white dark:hover:bg-zinc-600 hover:text-black;
-  }
+
   .hover-slide-animation {
     @apply relative overflow-hidden before:absolute before:h-full before:w-40 before:bg-stone-900 dark:before:bg-gray-50 before:opacity-10 dark:before:opacity-5 before:-right-10 before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4 hover:before:scale-[7] before:duration-700;
   }
@@ -243,9 +220,7 @@ code > .line::before {
   .card {
     @apply bg-white dark:bg-darkSecondary p-5 sm:p-10 flex flex-col sm:flex-row gap-8 items-center max-w-2xl shadow-md rounded-lg mt-[30%] sm:mt-8 transition-all;
   }
-  .blog-container {
-    @apply !w-full dark:text-neutral-400 my-5 font-medium;
-  }
+
 }
 
 @layer base {
@@ -286,7 +261,6 @@ code > .line::before {
     @apply !text-black dark:!text-white !font-bold;
   }
 
-  /* For Blog page to remove the underline  */
   h2 > a,
   h3 > a,
   h4 > a,
