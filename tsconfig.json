@@ -53,7 +53,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/sitemap.xml.jsx"  ],
+, "pages/sitemap.xml.jsx", "components/Footer.jsx"  ],
   "exclude": [
     "node_modules"
   ]
