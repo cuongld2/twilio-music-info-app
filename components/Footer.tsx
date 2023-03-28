@@ -56,18 +56,6 @@ export default function Footer({
   );
 }
 
-function FooterLink({ route, text }: { route: string; text: string }) {
-  return (
-    <Link href={`/${route}`}>
-      <motion.p
-        className="hover:text-black dark:hover:text-white w-fit"
-        variants={popUp}
-      >
-        {text}
-      </motion.p>
-    </Link>
-  );
-}
 
 function NotPlaying() {
   return (
