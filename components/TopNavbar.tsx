@@ -1,16 +1,14 @@
 /* Importing Modules */
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
 import {
-  FadeContainer,
   hamFastFadeContainer,
-  mobileNavItemSideways,
-  popUp,
+  mobileNavItemSideways
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 /* TopNavbar Component */
 export default function TopNavbar() {
@@ -97,7 +95,6 @@ export default function TopNavbar() {
       <motion.div
         initial="hidden"
         animate="visible"
-        variants={popUp}
         className="cursor-pointer"
         title="Toggle Theme"
       >
@@ -111,25 +108,6 @@ export default function TopNavbar() {
   );
 }
 
-// NavItem Container
-function NavItem({ href, text }: { href: string; text: string }) {
-  const router = useRouter();
-  const isActive = router.asPath === (href === "/home" ? "/" : href);
-  return (
-    <Link
-      className={`${
-        isActive
-          ? "font-bold text-gray-800 dark:text-gray-100"
-          : " text-gray-600 dark:text-gray-300"
-      } sm:inline-block transition-all text-[17px] hidden px-2 md:px-3 py-[3px] hover:bg-black/10  dark:hover:bg-neutral-700/50 rounded-md`}
-      href={href === "/home" ? "/" : href}
-    >
-      <motion.p className="capitalize" variants={popUp}>
-        {text}
-      </motion.p>
-    </Link>
-  );
-}
 
 // Hamburger Button
 function HamBurger({
@@ -144,7 +122,6 @@ function HamBurger({
       style={{ zIndex: 1000 }}
       initial="hidden"
       animate="visible"
-      variants={popUp}
       className="sm:hidden"
     >
       {!open ? (

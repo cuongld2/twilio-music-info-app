@@ -1,12 +1,10 @@
 import UPI from "@components/SVG/UPI";
 import {
   FadeContainer,
-  fromTopVariant,
-  popUp,
+  fromTopVariant
 } from "@content/FramerMotionVariants";
 import React, { FormEvent, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useDarkMode } from "@context/darkModeContext";
 import { BiRupee } from "react-icons/bi";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { FiInfo } from "react-icons/fi";
@@ -25,7 +23,6 @@ export default function Support() {
         className="grid gap-5 sm:grid-cols-3"
       >
         <motion.button
-          variants={popUp}
           onClick={() => {
             setShowUPIForm(!showUPIForm);
             lockScroll();
@@ -55,8 +52,6 @@ export default function Support() {
 function UPIPaymentForm({ close }: { close: () => void }) {
   const [amount, setAmount] = useState(0);
   const [qrValue, setQrValue] = useState("");
-
-  const { isDarkMode } = useDarkMode();
 
   const generatePaymentQR = (e: FormEvent) => {
     e.preventDefault();
@@ -120,7 +115,6 @@ function UPIPaymentForm({ close }: { close: () => void }) {
                 onClick={generatePaymentQR}
                 initial="hidden"
                 animate="visible"
-                variants={popUp}
                 type="submit"
                 className="px-4 py-1.5 w-9/12 sm:w-1/2 flex justify-center mx-auto rounded-lg font-semibold bg-black text-white dark:bg-white dark:text-black clickable_button"
               >

@@ -1,27 +1,6 @@
 import { Variants } from "framer-motion";
 
-export const popUp: Variants = {
-  hidden: { scale: 0, opacity: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-    },
-  },
-};
 
-export const popUpFromBottomForText: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 60,
-    },
-  },
-};
 
 export const headingFromLeft: Variants = {
   hidden: { x: -200, opacity: 0 },

@@ -2,8 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   FadeContainer,
-  opacityVariant,
-  popUp,
+  opacityVariant
 } from "../content/FramerMotionVariants";
 import { motion } from "framer-motion";
 import { SiSpotify } from "react-icons/si";
